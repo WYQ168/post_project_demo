@@ -1,0 +1,365 @@
+{
+	"easycom": {
+			"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+		},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"app-plus": { //app配置自定义导航
+					"titleNView": false //app禁止使用原生导航
+				}
+			}
+		},
+		{
+			"path": "pages/index/myIndex",
+			"style": {
+				"app-plus": { //app配置自定义导航
+					"titleNView": false //app禁止使用原生导航
+				},
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/index/groupIndex",
+			"style": {
+				"app-plus": { //app配置自定义导航
+					"titleNView": false //app禁止使用原生导航
+				},
+				"navigationBarTitleText": "数据"
+			}
+		},
+		{
+			"path": "pages/index/inviteIndex",
+			"style": {
+				"app-plus": { //app配置自定义导航
+					"titleNView": false //app禁止使用原生导航
+				},
+				"navigationBarTitleText": "社区"
+			}
+		}
+	],
+	"subPackages": [{
+		"root": "subPages",
+		"pages": [{
+				"path": "home/poins/poins",
+				"style": {
+					"navigationBarTitleText": "积分兑换",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#1C53DA",
+					"navigationBarTextStyle": "white"
+				}
+			}, {
+				"path": "home/gift/gift",
+				"style": {
+					"enablePullDownRefresh": false,
+					"navigationBarTitleText": "礼包活动",
+					"navigationBarBackgroundColor": "#4681F4",
+					"navigationBarTextStyle": "white"
+				}
+
+			},
+			{
+				"path": "home/MyMerchant/MyMerchant",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁用原生导航
+					},
+					"navigationBarTitleText": ""
+				}
+			}, {
+				"path": "home/serve/serve",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "home/Negotiable_securities/Negotiable_securities",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁止使用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "home/myMachine/myMachine",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁止使用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "home/myFriends/myFriends",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "home/goodShop/goodShop",
+				"style": {
+					"navigationBarTitleText": "创建入网账户",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#1C53DA",
+					"navigationBarTextStyle": "white"
+				}
+
+			}, {
+				"path": "home/mall/mall",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "home/ranking/ranking",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "Datas/grades/grades",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁止使用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "Datas/income/income",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "Datas/mybill/mybill",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "Datas/invoice/invoice",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "Datas/historical_data/historical_data",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "myIndex/complaint/complaint",
+				"style": {
+					"navigationBarTitleText": "投诉工单",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#1C53DA",
+					"navigationBarTextStyle": "white"
+				}
+
+			}, {
+				"path": "myIndex/mywallet/mywallet",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁止使用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "myIndex/userInfo/userInfo",
+				"style": {
+					"navigationBarTitleText": "个人信息",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#3A79FF",
+					"navigationBarTextStyle": "white"
+				}
+
+			}, {
+				"path": "myIndex/pointsMony/pointsMony",
+				"style": {
+					"navigationBarTitleText": "现金+积分",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "myIndex/MPOSmony/MPOSmony",
+				"style": {
+					"navigationBarTitleText": "现金+MPOS",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "myIndex/exchange/exchange",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": true //app启用原生导航
+					},
+					"navigationBarTitleText": "兑换记录",
+					"enablePullDownRefresh": false,
+					"navigationBarTextStyle": "white",
+					"navigationBarBackgroundColor": "#1C53DA"
+				}
+
+			}, {
+				"path": "Login_regist/login_1/login_1",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false,
+					"navigationBarTextStyle": "white",
+					"navigationBarBackgroundColor": "#1C53DA"
+				}
+
+			}
+		    ,{
+                    "path" : "Login_regist/forgetPsssword/forgetPsssword",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "Login_regist/idRetrieve/idRetrieve",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "重置密码",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "Login_regist/codeRetrieve/codeRetrieve",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "修改登陆密码",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myIndex/Setting/Setting",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myIndex/mypoints/mypoints",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myIndex/pointDetail/pointDetail",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myIndex/aboutOur/aboutOur",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myIndex/Setting/rechangePassword",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myIndex/Setting/rePaypassword",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "feedback",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+		// "navigationStyle": "custom" //禁用原生导航
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "rgba(70, 129, 244, 1)",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/homeHandle.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/index/groupIndex",
+				"iconPath": "static/group.png",
+				"selectedIconPath": "static/groupHandle.png",
+				"text": "数据"
+			},
+			{
+				"pagePath": "pages/index/inviteIndex",
+				"iconPath": "static/zp.png",
+				"selectedIconPath": "static/zpHandle.png",
+				"text": "社区"
+			}, {
+				"pagePath": "pages/index/myIndex",
+				"iconPath": "static/user.png",
+				"selectedIconPath": "static/userHandle.png",
+				"text": "我的"
+			}
+		]
+	}
+}
