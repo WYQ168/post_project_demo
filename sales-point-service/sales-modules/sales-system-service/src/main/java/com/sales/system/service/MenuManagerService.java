@@ -2,6 +2,7 @@ package com.sales.system.service;
 
 import com.sales.system.domain.entity.Menu;
 import com.sales.system.domain.pojo.MenuPojo;
+import com.sales.system.domain.response.MenuAuthResp;
 import com.sales.system.domain.response.MenuResp;
 
 import java.util.List;
@@ -36,5 +37,11 @@ public interface MenuManagerService {
      * @return
      */
     List<MenuPojo> getRouterData();
+
+    /**
+     * 获取系统用户权限标识
+     * @return
+     */
+    List<MenuAuthResp>getSysUserAuthList();
 
 }

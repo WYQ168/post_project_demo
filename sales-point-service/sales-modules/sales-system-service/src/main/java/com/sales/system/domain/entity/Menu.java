@@ -1,9 +1,12 @@
 package com.sales.system.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -120,4 +123,9 @@ public class Menu {
      */
     @ApiModelProperty(value = "修改人")
     private Long updateBy;
+
+    @ApiModelProperty(value = "菜单子集")
+    @TableField(exist = false)
+    private List<Menu> children;
+
 }

@@ -8,6 +8,7 @@ import com.sales.system.service.MenuManagerService;
 import com.sales.system.service.SysUserService;
 import com.sales.system.utils.UserDataUtils;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -51,5 +52,10 @@ public class SysUserController {
         return BaseResult.ok(null);
     }
 
+    @ApiOperation(value = "获取系统用户所有权限标识")
+    @RequestMapping(value = "/getSysUserAuthList",method = RequestMethod.GET)
+    public BaseResult<?>getSysUserAuthList(){
+        return BaseResult.ok(menuService.getSysUserAuthList());
+    }
 
 }

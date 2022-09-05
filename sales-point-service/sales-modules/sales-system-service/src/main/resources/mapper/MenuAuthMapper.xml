@@ -19,6 +19,21 @@
     from t_menu_auth
     where auth_id = #{authId,jdbcType=BIGINT}
   </select>
+
+  <select id="getSysUserAuthList" resultMap="getSysUserAuthListMap">
+    SELECT tsu.sys_permission AS authKey FROM t_sys_user tsu WHERE tsu.del_flag=0 GROUP BY tsu.sys_permission
+  </select>
+
+  <resultMap id="getSysUserAuthListMap" type="com.sales.system.domain.response.MenuAuthResp">
+    <association property="menuList"
+                 select="com.sales.system.mapper.MenuAuthMapper.getMenuDataListByAuthKey"
+                 column="{authKey=authKey}"></association>
+  </resultMap>
+
+  <select id="getMenuDataListByAuthKey" resultType="com.sales.system.domain.entity.Menu">
+    SELECT tm.* FROM t_menu_auth tma INNER JOIN t_menu tm ON tma.menu_id=tm.id WHERE tma.auth_key=#{authKey}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from t_menu_auth

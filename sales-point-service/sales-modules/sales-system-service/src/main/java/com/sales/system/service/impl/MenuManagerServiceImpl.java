@@ -4,10 +4,13 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.sales.common.core.exception.BaseException;
 import com.sales.system.domain.entity.Menu;
 import com.sales.system.domain.pojo.MenuPojo;
+import com.sales.system.domain.response.MenuAuthResp;
+import com.sales.system.mapper.MenuAuthMapper;
 import com.sales.system.mapper.MenuMapper;
 import com.sales.system.domain.entity.SysUser;
 import com.sales.system.domain.response.MenuResp;
 import com.sales.system.enums.SystemEnum;
+import com.sales.system.mapper.SysUserMapper;
 import com.sales.system.service.MenuManagerService;
 import com.sales.system.utils.UserDataUtils;
 import org.springframework.beans.BeanUtils;
@@ -31,6 +34,10 @@ public class MenuManagerServiceImpl implements MenuManagerService {
 
     @Autowired
     private MenuMapper menuMapper;
+    @Autowired
+    private SysUserMapper sysUserMapper;
+    @Autowired
+    private MenuAuthMapper menuAuthMapper;
 
     @Override
     public List<MenuResp> getMenuDataList() {
@@ -113,5 +120,21 @@ public class MenuManagerServiceImpl implements MenuManagerService {
         return voList;
     }
 
+    @Override
+    public List<MenuAuthResp> getSysUserAuthList() {
+        List<MenuAuthResp>voList=menuAuthMapper.getSysUserAuthList();
+        voList.forEach(entity->{
+            checkMenuAuth(entity);
+        });
+        return voList;
+    }
+
+    private void checkMenuAuth(MenuAuthResp menuAuthResp){
+        List<Menu>menuList=menuAuthResp.getMenuList().stream().filter(entity-> Objects.isNull(entity.getPid()) || entity.getPid()==0L).collect(Collectors.toList());
+        for (Menu menu : menuList) {
+            menu.setChildren(menuAuthResp.getMenuList().stream().filter(entity->!Objects.isNull(entity.getPid()) && entity.getPid().equals(menu.getId())).collect(Collectors.toList()));
+        }
+        menuAuthResp.setMenuList(menuList);
+    }
 
 }

@@ -1,8 +1,14 @@
 package com.sales.system.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sales.system.domain.entity.Menu;
 import com.sales.system.domain.entity.MenuAuth;
+import com.sales.system.domain.response.MenuAuthResp;
+import org.apache.ibatis.annotations.Param;
 
-public interface MenuAuthMapper {
+import java.util.List;
+
+public interface MenuAuthMapper extends BaseMapper<MenuAuth> {
     int deleteByPrimaryKey(Long authId);
 
     int insert(MenuAuth record);
@@ -14,4 +20,18 @@ public interface MenuAuthMapper {
     int updateByPrimaryKeySelective(MenuAuth record);
 
     int updateByPrimaryKey(MenuAuth record);
+
+    /**
+     * 获取权限菜单列表
+     * @return
+     */
+    List<MenuAuthResp> getSysUserAuthList();
+
+    /**
+     * 获取菜单列表
+     * @param authKey 权限标识
+     * @return
+     */
+    List<Menu>getMenuDataListByAuthKey(@Param("authKey")String authKey);
+
 }

@@ -37,7 +37,10 @@ export const addMenuData = (params) => {
     data: params
   })
 }
-//删除
-
-
-
+//获取菜单权限列表
+export const getAuthMenuList = () =>{
+  return request({
+    url: '/system/sysUser/getSysUserAuthList',
+    method: 'get'
+  })
+}
