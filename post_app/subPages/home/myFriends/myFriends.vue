@@ -23,7 +23,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="friends" v-for="item in 9">
+		<view class="friends" v-for="item in 9" @click="Tofriendinfo">
 			<view class="friends_left">
 				<view class="headimgbox">
 					<image class="headimg" src="headimg" mode=""></image>
@@ -49,7 +49,11 @@
 			}
 		},
 		methods: {
-
+			Tofriendinfo(){
+				uni.navigateTo({
+					url:'./friendInfo'
+				})
+			}
 		}
 	}
 </script>

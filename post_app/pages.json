@@ -313,14 +313,6 @@
                     "enablePullDownRefresh": false
                 }
                 
-                },{
-                    "path" : "myIndex/bankCard/bankCard",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
                 }
                 ,{
                     "path" : "feedback",
@@ -331,7 +323,91 @@
                 }
                 
                 }
-                  ]
+                ,{
+                    "path" : "home/mall/product_details",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "home/myMachine/MachineInfo",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "home/MyMerchant/filterMerchant",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "home/MyMerchant/mechantInfo",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "home/mall/create_order",
+                    "style" :                                                                                    
+                {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁用原生导航
+					},
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myIndex/bankCard/bankCard",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myIndex/bankCard/changeCard",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                },
+				{
+				    "path" : "myIndex/ewm",
+				    "style" :                                                                                    
+				{
+				    "navigationBarTitleText": "",
+				    "enablePullDownRefresh": false
+				}
+				
+				}
+                ,{
+                    "path" : "home/myFriends/friendInfo",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

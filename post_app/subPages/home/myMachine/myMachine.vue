@@ -9,43 +9,21 @@
 				我的机具
 			</view>
 			<view class="nav_riht">
-				<image src="/static/home/sweep.png" mode="" class="sweep"></image>
-				<image src="/static/home/write.png" mode=""></image>
+				扣费管理
 			</view>
 		</view>
-		<view class="header">
-			<view class="input">
-				<image class="search" referrerpolicy="no-referrer"
-					src="@/static/search.png" />
-				<input class="text-group_1" placeholder="请输入机身号"></input>
-			</view>
-			<view class="downheader">
-				<view class="over" @click="activation(1)" :class="currentindex == 1?'active':''">已激活(212)</view>
-				<view class="no" @click="activation(2)" :class="currentindex == 2?'active':''">未激活(5)</view>
-				<view class="img">
-					<view class="left">
-						<image src="@/static/home/up_2.png" mode=""></image>
-					</view>
-					<view class="right">
-						<image src="@/static/home/screen_2.png" mode=""></image>
-					</view>
+		<view class="inpute">
+			<img class="img" src="/static/posSearch.png" alt="">
+			<input type="text" placeholder="请输入机具类型" placeholder-class="place">
+		</view>
+		<view class="posList">
+			<view class="posItem" v-for="item in 8" @click="ToMachineInfo">
+				<img class="pos_image" src="" alt="">
+				<view class="pos_info">
+					<text class="pos_name">MPOS</text>
+					<text class="pos_num">255</text>
 				</view>
-				
 			</view>
-		</view>
-		<view class="text">
-			<text>机身编号</text>
-			<text>操作</text>
-		</view>
-		<view class="Activated" v-if="currentindex == 1">
-			<view class="machines" v-for="item in 4">
-				<text class="num_1">372618621</text>
-				<text class="num_2">3726</text>
-				<image class="right" src="@/static/right.png" mode=""></image>
-			</view>
-		</view>
-		<view class="unActivated" v-if="currentindex == 2">
-			222222222
 		</view>
 	</view>
 </template>
@@ -54,21 +32,20 @@
 	export default {
 		data() {
 			return {
-				currentindex:1
+				
 			}
 		},
 		methods: {
-			activation(val){
-				this.currentindex = val
+			ToMachineInfo(){
+				uni.navigateTo({
+					url:'./MachineInfo'
+				})
 			}
 		}
 	}
 </script>
 
 <style scoped>
-	page{
-		background-color: rgb(244, 244, 244);
-	}
 	.nav{
 		width: 100%;
 		height: 190rpx;
@@ -90,101 +67,64 @@
 		font-size: 36rpx;
 		color: #fff;
 	}
-	.nav_riht image{
-		width: 31rpx;
-		height: 31rpx;
+	.nav_riht{
+		font-size: 28rpx;
+		color: #fff;
 	}
-	.sweep{
-		margin-right: 30rpx;
-	}
-	/* ------------ */
-	.header{
-		width: 100%;
-		height: 210rpx;
-		background-color: #fff;
-		padding-top: 26rpx;
-	}
-	.input{
-		position: relative;
+	.inpute{
 		width: 690rpx;
+		height: 90rpx;
 		margin: 0 auto;
-	}
-	.search{
-		position: absolute;
-		top: 18rpx;
-		left: 30rpx;
-		width: 40rpx;
-		height: 40rpx;
-	}
-	.text-group_1{
-		width: 690rpx;
-		height: 78rpx;
-		border: 1px solid #3597F9;
-		border-radius: 40rpx;
-		padding-left: 92rpx;
-	}
-	.downheader{
+		margin-top: 25rpx;
+		border: 1px solid rgba(53, 151, 249, 1);
+		border-radius: 45rpx;
 		display: flex;
 		align-items: center;
-		padding: 0 30rpx;
-		margin-top: 36rpx;
-		justify-content: space-between;
+		padding-left: 40rpx;
 	}
-	.over,.no{
-		padding-bottom: 15rpx;
-		border-bottom: 3px solid transparent;
-	}
-	.active{
-		color: #3597F9;
-		border-bottom: 3px solid #3597F9;
-	}
-	.downheader .img{
-		display: flex;
-		justify-content: space-between;
-		width: 94rpx;
-		padding-bottom: 15rpx;
-	}
-	.downheader .left,.downheader .right{
-		width: 26rpx;
-		height: 26rpx;
-		/* background-color: #3597F9; */
-	}
-	.img .right image,.img .left image{
-		width: 100%;
-		height: 100%;
-	}
-	.text{
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		padding: 30rpx 30rpx 0;
-		font-size: 24rpx;
-		color: #999999;
-	}
-	.Activated{
-		width: 100%;
-	}
-	.machines{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		background-color: #fff;
-		padding: 0 32rpx;
-		height: 88rpx;
-		margin: 2px;
-	}
-	.num_1{
-		font-size: 32rpx;
-		color: #666666;
-	}
-	.num_2{
-		font-size: 32rpx;
-		color: #FF4102;
-		margin-left: -360rpx;
-	}
-	.right{
+	.inpute .img{
 		width: 32rpx;
 		height: 32rpx;
+		margin-right: 20rpx;
 	}
-
+	.place{
+		font-size: 24rpx;
+		color: rgba(102, 102, 102, 1);
+	}
+	.posList{
+		margin-top: 25rpx;
+		padding: 38rpx 30rpx 0;
+		border-top: 1px solid rgba(244, 244, 244, 1);
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	.posItem{
+		width: 335rpx;
+		height: 180rpx;
+		background-color: rgba(245, 245, 245, 1);
+		border-radius: 20rpx;
+		margin-bottom: 25rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.pos_image{
+		width: 100rpx;
+		height: 100rpx;
+		border-radius: 50%;
+		background-color: #144BD5;
+		border: none !important;
+		margin-right: 36rpx;
+	}
+	.pos_info{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.pos_name{
+		font-size: 30rpx;
+		color: rgba(153, 153, 153, 1);
+		margin-bottom: 6rpx;
+	}
 </style>

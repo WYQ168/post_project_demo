@@ -3,15 +3,15 @@
 		<view class="block_1 flex-col justify-end">
 			<view class="section_1 flex-col">
 				<view class="list_1 flex-row">
-					<view class="image-text_1 flex-col justify-between" v-for="(item, index) in loopData0" :key="index">
+					<view class="image-text_1 flex-col justify-between" v-for="(item, index) in loopData0" :key="index" @click="loopDataList(item.path)">
 						<image class="image_1" referrerpolicy="no-referrer" :src="item.lanhuimage0" />
-						<text class="text-group_1" v-html="item.lanhutext0"  @click="bank"></text>
+						<text class="text-group_1" v-html="item.lanhutext0"></text>
 					</view>
 				</view>
 			</view>
 			<view class="list_2 flex-col">
-				<view class="list-items_1 flex-row" v-for="(item, index) in loopData1" :key="index">
-					<image class="label_1" referrerpolicy="no-referrer" :src="item.lanhuimage0"  />
+				<view class="list-items_1 flex-row" v-for="(item, index) in loopData1" :key="index" @click="ToloopData1(item.Path)">
+					<image class="label_1" referrerpolicy="no-referrer" :src="item.lanhuimage0" />
 					<text class="text_1" v-html="item.lanhutext0"></text>
 					<text class="text_2" v-html="item.lanhutext1"></text>
 				</view>
@@ -46,23 +46,23 @@
 				</view>
 			</view>
 
+			</view>
+			<text class="text_6">推荐码：C000736</text>
+			<view class="block_6">
+				<view class="block" @click="Tomywallet">
+					<view class="num">0.00</view>
+					<view class="text">钱包账户（元）</view>
+				</view>
+				<view class="block" @click="Tomypoints">
+					<view class="num">0</view>
+					<view class="text">账户积分</view>
+				</view>
+				<view class="block" @click="Topoints">
+					<view class="num">0</view>
+					<view class="text">流通券账户（元）</view>
+				</view>
+			</view>
 		</view>
-		<text class="text_6">推荐码：C000736</text>
-		<view class="block_6">
-			<view class="block" @click="Tomywallet">
-				<view class="num">0.00</view>
-				<view class="text">钱包账户（元）</view>
-			</view>
-			<view class="block" @click="Tomypoints">
-				<view class="num">0</view>
-				<view class="text">账户积分</view>
-			</view>
-			<view class="block" @click="Topoints">
-				<view class="num">0</view>
-				<view class="text">流通券账户（元）</view>
-			</view>
-		</view>
-	</view>
 	</view>
 </template>
 <script>
@@ -72,29 +72,35 @@
 				loopData0: [{
 						lanhuimage0: 'https://lanhu.oss-cn-beijing.aliyuncs.com/psabuaqu88ynq1qkjt3u5k7qc82zljyvt551746c453-13c8-46e4-8728-bc99ea754d52',
 						lanhutext0: '礼包',
+						path:''
 					},
 					{
 						lanhuimage0: 'https://lanhu.oss-cn-beijing.aliyuncs.com/ps6weeb29d1ronsq3ue5n6xks6tapwcv0wmd356a5f4-671f-49c9-ac43-95986a059265',
 						lanhutext0: '订单',
+						path:''
 					},
 					{
 						lanhuimage0: 'https://lanhu.oss-cn-beijing.aliyuncs.com/ps9icym94qfu8z4xvz4yvoondamphvbyi9946d6d8-90b1-4c50-ae0d-ff858fe1a17d',
 						lanhutext0: '购机',
+						path:''
 					},
 					{
 						lanhuimage0: 'https://lanhu.oss-cn-beijing.aliyuncs.com/psblo5phu9a7wpub015cx0pfyj0bfczwdetadbcec2a-23fc-4d8b-a81e-43dfe033aa19',
 						lanhutext0: '银行卡',
+						path:'/subPages/myIndex/bankCard/bankCard'
 					},
 				],
 				loopData1: [{
 						lanhuimage0: 'https://lanhu.oss-cn-beijing.aliyuncs.com/ps5tvu43kzizwkztvya5vb9fqcjn8665lva9877391-82bd-492e-b174-707923973326',
 						lanhutext0: '邀请加入',
 						lanhutext1: '邀请伙伴有大礼',
+						Path:'/subPages/myIndex/ewm'
 					},
 					{
 						lanhuimage0: 'https://lanhu.oss-cn-beijing.aliyuncs.com/ps85h5d97ikiapdarns0m6qtrlmguv4fuca1ffe18-5f2d-4969-8341-53b586a75171',
 						lanhutext0: '我的邀请人',
 						lanhutext1: '江西展源信息公司',
+						Path:'/'
 					},
 				],
 				dataList: [{
@@ -144,41 +150,44 @@
 		methods: {
 			godataListItem(path) {
 				uni.navigateTo({
-					url: path
+					url:path
 				})
 			},
-			Tomywallet() {
+			loopDataList(path){
 				uni.navigateTo({
-					url: '/subPages/myIndex/mywallet/mywallet'
+					url:path
 				})
 			},
-			Tomypoints() {
+			ToloopData1(path){
 				uni.navigateTo({
-					url: '/subPages/myIndex/mypoints/mypoints'
+					url:path
 				})
 			},
-			userInfo() {
+			Tomywallet(){
 				uni.navigateTo({
-					url: '/subPages/myIndex/userInfo/userInfo'
+					url:'/subPages/myIndex/mywallet/mywallet'
 				})
 			},
-			Topoints() {
+			Tomypoints(){
 				uni.navigateTo({
-					url: '/subPages/myIndex/pointsMony/pointsMony'
+					url:'/subPages/myIndex/mypoints/mypoints'
 				})
 			},
-			Tologin() {
+			userInfo(){
 				uni.navigateTo({
-					url: '/subPages/Login_regist/login_1/login_1'
+					url:'/subPages/myIndex/userInfo/userInfo'
 				})
 			},
-			bank() {
-				console.log(0)
+			Topoints(){
 				uni.navigateTo({
-					url:'/subPages/myIndex/bankCard/bankCard'
-				});
+					url:'/subPages/myIndex/pointsMony/pointsMony'
+				})
+			},
+			Tologin(){
+				uni.navigateTo({
+					url:'/subPages/Login_regist/login_1/login_1'
+				})
 			}
-
 		}
 	};
 </script>
@@ -319,7 +328,7 @@
 		height: 399rpx;
 		background: url(https://636c-cloud1-4ge04zyie85f8672-1311921377.tcb.qcloud.la/psn.png?sign=80ea7658be1e1df2dc6674349fae2ea7&t=1661138887) 100% no-repeat;
 		background-size: 100% 100%;
-		padding-left: 40rpx;
+		padding-left:40rpx ;
 	}
 
 	.label_12 {
@@ -492,19 +501,16 @@
 		align-items: center;
 		padding: 0 40rpx;
 	}
-
-	.block {
+	.block{
 		flex: 1;
 		text-align: center;
 	}
-
-	.num {
+	.num{
 		font-size: 36rpx;
 		color: #000000;
 		font-weight: bold;
 	}
-
-	.text {
+	.text{
 		font-size: 24rpx;
 		color: #666666;
 		margin-top: 14rpx;

@@ -32,7 +32,7 @@
 
 		</view>
 		<view class="" v-if="current == 0">
-			<view class="phoneList" v-for="item in phoneList">
+			<view class="phoneList" v-for="item in phoneList" @click="product_details">
 				<view class="phoneImg">
 					<image :src="item.imgPath" mode=""></image>
 				</view>
@@ -44,7 +44,11 @@
 					</view>
 					<view class="num">
 						<view class="much"><text>￥{{item.much}}</text>起</view>
-						<view class="xing"></view>
+						<view class="star_box">
+							<image
+								src="https://lanhu.oss-cn-beijing.aliyuncs.com/psc28q72vwn8ehpkl2vbb87vwcz258aonoo84755e98-45d4-4f5e-9d90-69796288fea0"
+								mode="" class="star" v-for="item in 4"></image>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -94,6 +98,11 @@
 		methods: {
 			changeList(val) {
 				this.current = val
+			},
+			product_details(){
+				uni.navigateTo({
+					url:'product_details'
+				})
 			}
 		}
 	}
@@ -246,6 +255,11 @@
 	.much{
 		font-size: 27rpx;
 		color: #7B889B;
+	}
+	.star {
+		width: 33rpx;
+		height: 33rpx;
+		margin-right: 9rpx;
 	}
 	.much text{
 		font-size: 46rpx;
