@@ -3,7 +3,9 @@ package com.sales.system.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.sales.common.core.exception.BaseException;
 import com.sales.system.domain.entity.Menu;
+import com.sales.system.domain.entity.MenuAuth;
 import com.sales.system.domain.pojo.MenuPojo;
+import com.sales.system.domain.request.MenuAuthEditReq;
 import com.sales.system.domain.response.MenuAuthResp;
 import com.sales.system.mapper.MenuAuthMapper;
 import com.sales.system.mapper.MenuMapper;
@@ -16,6 +18,7 @@ import com.sales.system.utils.UserDataUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -123,18 +126,104 @@ public class MenuManagerServiceImpl implements MenuManagerService {
     @Override
     public List<MenuAuthResp> getSysUserAuthList() {
         List<MenuAuthResp>voList=menuAuthMapper.getSysUserAuthList();
-        voList.forEach(entity->{
-            checkMenuAuth(entity);
-        });
+        List<Menu>allMenuList=menuMapper.selectList(Wrappers.<Menu>lambdaQuery()
+            .eq(Menu::getDelFlag,Integer.valueOf(SystemEnum.DELETE_STATUS_1.getValue()))
+        );
+        List<Menu>allSourceList=checkMenuSort(allMenuList);
+        for (MenuAuthResp menuAuthResp : voList) {
+            allMenuList=new ArrayList<>();
+            for (Menu entity : allSourceList) {
+                Menu menu=new Menu();
+                List<Menu>childrenList=new ArrayList<>();
+                for (Menu child : entity.getChildren()) {
+                    Menu menuChildren=new Menu();
+                    BeanUtils.copyProperties(child,menuChildren);
+                    childrenList.add(menuChildren);
+                }
+                BeanUtils.copyProperties(entity,menu);
+                menu.setChecked(false);
+                menu.setChildren(childrenList);
+                allMenuList.add(menu);
+            }
+            menuAuthResp.setMenuList(checkMenuAuth(menuAuthResp,allMenuList));
+        }
         return voList;
     }
 
-    private void checkMenuAuth(MenuAuthResp menuAuthResp){
+    private List<Menu> checkMenuAuth(MenuAuthResp menuAuthResp,List<Menu>allMenuList){
         List<Menu>menuList=menuAuthResp.getMenuList().stream().filter(entity-> Objects.isNull(entity.getPid()) || entity.getPid()==0L).collect(Collectors.toList());
         for (Menu menu : menuList) {
             menu.setChildren(menuAuthResp.getMenuList().stream().filter(entity->!Objects.isNull(entity.getPid()) && entity.getPid().equals(menu.getId())).collect(Collectors.toList()));
         }
-        menuAuthResp.setMenuList(menuList);
+        List<Long>checkMenuId=menuList.stream().map(entity->{
+            return entity.getId();
+        }).collect(Collectors.toList());
+        allMenuList.forEach(entity->{
+            if (checkMenuId.contains(entity.getId())){
+                entity.setChecked(true);
+                Menu checkMenu=menuList.stream().filter(entityData->entityData.getId().equals(entity.getId())).collect(Collectors.toList()).get(0);
+                List<Long>twoCheckIdList=checkMenu.getChildren().stream().map(twoEntity->{
+                    return twoEntity.getId();
+                }).collect(Collectors.toList());
+                entity.getChildren().forEach(entityData->{
+                    if (twoCheckIdList.contains(entityData.getId())){
+                        entityData.setChecked(true);
+                    }
+                });
+            }
+        });
+        return allMenuList;
+    }
+
+    private List<Menu> checkMenuSort(List<Menu>menuList){
+        List<Menu>oneMenuList=menuList.stream().filter(entity-> Objects.isNull(entity.getPid()) || entity.getPid()==0L).collect(Collectors.toList());
+        for (Menu menu : oneMenuList) {
+            menu.setChildren(menuList.stream().filter(entity->!Objects.isNull(entity.getPid()) && entity.getPid().equals(menu.getId())).collect(Collectors.toList()));
+        }
+        return oneMenuList;
+    }
+
+    @Override
+    public List<Menu> getMenuTreeList() {
+        List<Menu>allMenuList=menuMapper.selectList(Wrappers.<Menu>lambdaQuery()
+                .eq(Menu::getDelFlag,Integer.valueOf(SystemEnum.DELETE_STATUS_1.getValue()))
+        );
+        allMenuList=checkMenuSort(allMenuList);
+        return allMenuList;
+    }
+
+    @Override
+    public void deleteMenuAuthData(String authKey) throws Exception {
+        Long checkCount=sysUserMapper.selectCount(Wrappers.<SysUser>lambdaQuery()
+            .eq(SysUser::getDelFlag,Integer.valueOf(SystemEnum.DELETE_STATUS_1.getValue()))
+            .eq(SysUser::getSysPermission,authKey)
+        );
+        if (checkCount>0){
+            throw new Exception("该权限已使用，不可删除");
+        }
+        menuAuthMapper.delete(Wrappers.<MenuAuth>lambdaQuery()
+            .eq(MenuAuth::getAuthKey,authKey)
+        );
+    }
+
+    @Override
+    public void addMenuAuthData(MenuAuthEditReq menuAuthEditReq) {
+        menuAuthMapper.insertMenuAuthDataByList(menuAuthEditReq);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void editMenuAuthData(MenuAuthEditReq menuAuthEditReq) {
+        menuAuthMapper.delete(Wrappers.<MenuAuth>lambdaQuery()
+                .eq(MenuAuth::getAuthKey,menuAuthEditReq.getOldAuthKey())
+        );
+        menuAuthMapper.insertMenuAuthDataByList(menuAuthEditReq);
+        SysUser sysUser=new SysUser();
+        sysUser.setSysPermission(menuAuthEditReq.getAuthKey());
+        sysUserMapper.update(sysUser,Wrappers.<SysUser>lambdaQuery()
+            .eq(SysUser::getDelFlag,Integer.valueOf(SystemEnum.DELETE_STATUS_1.getValue()))
+            .eq(SysUser::getSysPermission,menuAuthEditReq.getOldAuthKey())
+        );
     }
 
 }

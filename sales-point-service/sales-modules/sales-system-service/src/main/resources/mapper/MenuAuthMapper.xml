@@ -21,7 +21,7 @@
   </select>
 
   <select id="getSysUserAuthList" resultMap="getSysUserAuthListMap">
-    SELECT tsu.sys_permission AS authKey FROM t_sys_user tsu WHERE tsu.del_flag=0 GROUP BY tsu.sys_permission
+    SELECT auth_key AS authKey FROM t_menu_auth GROUP BY auth_key
   </select>
 
   <resultMap id="getSysUserAuthListMap" type="com.sales.system.domain.response.MenuAuthResp">
@@ -64,7 +64,16 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sales.system.domain.entity.MenuAuth">
+
+    <insert id="insertMenuAuthDataByList">
+      INSERT INTO t_menu_auth(auth_key,menu_id)
+      VALUES
+        <foreach collection="params.menuList" item="item" index="index" separator=",">
+          (#{params.authKey},#{item})
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.sales.system.domain.entity.MenuAuth">
     <!--@mbg.generated-->
     update t_menu_auth
     <set>

@@ -1,5 +1,6 @@
 package com.sales.system.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.Data;
     */
 @ApiModel(value="com-sales-system-domain-entity-MenuAuth")
 @Data
+@TableName(value = "t_menu_auth")
 public class MenuAuth {
     /**
     * 主键id

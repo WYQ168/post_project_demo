@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.sales.common.core.constant.SecurityConstants;
 import com.sales.common.core.domain.BaseResult;
 import com.sales.system.domain.entity.SysUser;
+import com.sales.system.domain.request.MenuAuthEditReq;
 import com.sales.system.service.MenuManagerService;
 import com.sales.system.service.SysUserService;
 import com.sales.system.utils.UserDataUtils;
@@ -56,6 +57,33 @@ public class SysUserController {
     @RequestMapping(value = "/getSysUserAuthList",method = RequestMethod.GET)
     public BaseResult<?>getSysUserAuthList(){
         return BaseResult.ok(menuService.getSysUserAuthList());
+    }
+
+    @ApiOperation(value = "获取菜单树形数据")
+    @RequestMapping(value = "/getMenuTreeList",method = RequestMethod.GET)
+    public BaseResult<?>getMenuTreeList(){
+        return BaseResult.ok(menuService.getMenuTreeList());
+    }
+
+    @ApiOperation(value = "新增菜单权限")
+    @RequestMapping(value = "/addMenuAuthData",method = RequestMethod.POST)
+    public BaseResult<?>addMenuAuthData(@RequestBody MenuAuthEditReq menuAuthEditReq){
+        menuService.addMenuAuthData(menuAuthEditReq);
+        return BaseResult.ok();
+    }
+
+    @ApiOperation(value = "编辑菜单权限")
+    @RequestMapping(value = "/editMenuAuthData",method = RequestMethod.POST)
+    public BaseResult<?>editMenuAuthData(@RequestBody MenuAuthEditReq menuAuthEditReq){
+        menuService.editMenuAuthData(menuAuthEditReq);
+        return BaseResult.ok();
+    }
+
+    @ApiOperation(value = "删除菜单权限")
+    @RequestMapping(value = "/deleteMenuAuthData",method = RequestMethod.POST)
+    public BaseResult<?>deleteMenuAuthData(@RequestParam String authKey) throws Exception {
+        menuService.deleteMenuAuthData(authKey);
+        return BaseResult.ok();
     }
 
 }

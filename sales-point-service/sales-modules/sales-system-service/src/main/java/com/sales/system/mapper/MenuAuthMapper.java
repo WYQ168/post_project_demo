@@ -3,6 +3,7 @@ package com.sales.system.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.sales.system.domain.entity.Menu;
 import com.sales.system.domain.entity.MenuAuth;
+import com.sales.system.domain.request.MenuAuthEditReq;
 import com.sales.system.domain.response.MenuAuthResp;
 import org.apache.ibatis.annotations.Param;
 
@@ -33,5 +34,11 @@ public interface MenuAuthMapper extends BaseMapper<MenuAuth> {
      * @return
      */
     List<Menu>getMenuDataListByAuthKey(@Param("authKey")String authKey);
+
+    /**
+     * 新增菜单权限
+     * @param menuAuthEditReq
+     */
+    void insertMenuAuthDataByList(@Param("params") MenuAuthEditReq menuAuthEditReq);
 
 }

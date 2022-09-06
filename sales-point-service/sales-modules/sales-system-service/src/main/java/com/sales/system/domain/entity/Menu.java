@@ -128,4 +128,8 @@ public class Menu {
     @TableField(exist = false)
     private List<Menu> children;
 
+    @ApiModelProperty(value = "是否选中")
+    @TableField(exist = false)
+    private Boolean checked=false;
+
 }
