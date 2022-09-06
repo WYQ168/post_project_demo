@@ -20,9 +20,9 @@
 
     <sql id="selectBucklesVo">
         select tb.buckles_id,
-               tm.machine_number,
-               tm.machine_type,
-               tb.buckles_money,
+               tm.machine_number spare_field1,
+               tm.machine_type spare_field2,
+               tb.buckles_money spare_field3,
                tb.create_by,
                tb.create_time
         from t_buckles tb

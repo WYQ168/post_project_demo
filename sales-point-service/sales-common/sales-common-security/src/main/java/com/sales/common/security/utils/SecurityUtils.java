@@ -75,7 +75,6 @@ public class SecurityUtils {
      * 获取请求token
      */
     public static String getToken() {
-        System.out.println("============" + ServletUtils.getRequest());
         return getToken(ServletUtils.getRequest());
     }
 
