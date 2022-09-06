@@ -5,13 +5,13 @@
 				<view class="list_1 flex-row">
 					<view class="image-text_1 flex-col justify-between" v-for="(item, index) in loopData0" :key="index">
 						<image class="image_1" referrerpolicy="no-referrer" :src="item.lanhuimage0" />
-						<text class="text-group_1" v-html="item.lanhutext0"></text>
+						<text class="text-group_1" v-html="item.lanhutext0"  @click="bank"></text>
 					</view>
 				</view>
 			</view>
 			<view class="list_2 flex-col">
 				<view class="list-items_1 flex-row" v-for="(item, index) in loopData1" :key="index">
-					<image class="label_1" referrerpolicy="no-referrer" :src="item.lanhuimage0" />
+					<image class="label_1" referrerpolicy="no-referrer" :src="item.lanhuimage0"  />
 					<text class="text_1" v-html="item.lanhutext0"></text>
 					<text class="text_2" v-html="item.lanhutext1"></text>
 				</view>
@@ -46,23 +46,23 @@
 				</view>
 			</view>
 
+		</view>
+		<text class="text_6">推荐码：C000736</text>
+		<view class="block_6">
+			<view class="block" @click="Tomywallet">
+				<view class="num">0.00</view>
+				<view class="text">钱包账户（元）</view>
 			</view>
-			<text class="text_6">推荐码：C000736</text>
-			<view class="block_6">
-				<view class="block" @click="Tomywallet">
-					<view class="num">0.00</view>
-					<view class="text">钱包账户（元）</view>
-				</view>
-				<view class="block" @click="Tomypoints">
-					<view class="num">0</view>
-					<view class="text">账户积分</view>
-				</view>
-				<view class="block" @click="Topoints">
-					<view class="num">0</view>
-					<view class="text">流通券账户（元）</view>
-				</view>
+			<view class="block" @click="Tomypoints">
+				<view class="num">0</view>
+				<view class="text">账户积分</view>
+			</view>
+			<view class="block" @click="Topoints">
+				<view class="num">0</view>
+				<view class="text">流通券账户（元）</view>
 			</view>
 		</view>
+	</view>
 	</view>
 </template>
 <script>
@@ -144,34 +144,41 @@
 		methods: {
 			godataListItem(path) {
 				uni.navigateTo({
-					url:path
+					url: path
 				})
 			},
-			Tomywallet(){
+			Tomywallet() {
 				uni.navigateTo({
-					url:'/subPages/myIndex/mywallet/mywallet'
+					url: '/subPages/myIndex/mywallet/mywallet'
 				})
 			},
-			Tomypoints(){
+			Tomypoints() {
 				uni.navigateTo({
-					url:'/subPages/myIndex/mypoints/mypoints'
+					url: '/subPages/myIndex/mypoints/mypoints'
 				})
 			},
-			userInfo(){
+			userInfo() {
 				uni.navigateTo({
-					url:'/subPages/myIndex/userInfo/userInfo'
+					url: '/subPages/myIndex/userInfo/userInfo'
 				})
 			},
-			Topoints(){
+			Topoints() {
 				uni.navigateTo({
-					url:'/subPages/myIndex/pointsMony/pointsMony'
+					url: '/subPages/myIndex/pointsMony/pointsMony'
 				})
 			},
-			Tologin(){
+			Tologin() {
 				uni.navigateTo({
-					url:'/subPages/Login_regist/login_1/login_1'
+					url: '/subPages/Login_regist/login_1/login_1'
 				})
+			},
+			bank() {
+				console.log(0)
+				uni.navigateTo({
+					url:'/subPages/myIndex/bankCard/bankCard'
+				});
 			}
+
 		}
 	};
 </script>
@@ -312,7 +319,7 @@
 		height: 399rpx;
 		background: url(https://636c-cloud1-4ge04zyie85f8672-1311921377.tcb.qcloud.la/psn.png?sign=80ea7658be1e1df2dc6674349fae2ea7&t=1661138887) 100% no-repeat;
 		background-size: 100% 100%;
-		padding-left:40rpx ;
+		padding-left: 40rpx;
 	}
 
 	.label_12 {
@@ -485,16 +492,19 @@
 		align-items: center;
 		padding: 0 40rpx;
 	}
-	.block{
+
+	.block {
 		flex: 1;
 		text-align: center;
 	}
-	.num{
+
+	.num {
 		font-size: 36rpx;
 		color: #000000;
 		font-weight: bold;
 	}
-	.text{
+
+	.text {
 		font-size: 24rpx;
 		color: #666666;
 		margin-top: 14rpx;

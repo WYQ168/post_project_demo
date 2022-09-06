@@ -313,6 +313,14 @@
                     "enablePullDownRefresh": false
                 }
                 
+                },{
+                    "path" : "myIndex/bankCard/bankCard",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
                 }
                 ,{
                     "path" : "feedback",
@@ -323,7 +331,7 @@
                 }
                 
                 }
-            ]
+                  ]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
