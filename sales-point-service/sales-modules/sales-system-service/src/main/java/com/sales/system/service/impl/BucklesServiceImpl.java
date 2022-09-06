@@ -39,7 +39,6 @@ public class BucklesServiceImpl implements IBucklesService {
      */
     @Override
     public List<Buckles> selectBucklesList(Buckles buckles) {
-
         return bucklesMapper.selectBucklesList(buckles);
     }
 
