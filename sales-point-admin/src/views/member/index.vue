@@ -19,7 +19,6 @@
         <el-button type="primary" icon="el-icon-plus" plain>新增</el-button>
         <el-button type="danger" icon="el-icon-delete" plain>删除</el-button>
       </el-row>
-
     </el-header>
     <!--  中部  -->
     <el-main>
@@ -27,11 +26,12 @@
         <el-col :span="24">
           <el-table :data="tableData" border style="width: 100%" :default-sort="{prop: 'date', order: 'descending'}">
             <el-table-column type="bucklesId" width="55"></el-table-column>
-            <el-table-column prop="spare_field1" label="机具编号" sortable></el-table-column>
-            <el-table-column prop="spare_field2" label="机具类型" sortable></el-table-column>
-            <el-table-column prop="spare_field3" label="机具下发着" sortable></el-table-column>
-            <el-table-column prop="bucklesMoney" label="扣费金额(百分比)" sortable></el-table-column>
-            <el-table-column prop="bucklesStatus" label="扣费状态" sortable></el-table-column>
+            <el-table-column prop="spare_field1" label="会员名字" sortable></el-table-column>
+            <el-table-column prop="spare_field2" label="注册时间" sortable></el-table-column>
+            <el-table-column prop="spare_field3" label="机具类型" sortable></el-table-column>
+            <el-table-column prop="spare_field3" label="台数" sortable></el-table-column>
+            <el-table-column prop="bucklesMoney" label="会员等级" sortable></el-table-column>
+            <el-table-column prop="bucklesStatus" label="状态" sortable></el-table-column>
             <el-table-column prop="createTime" label="创建时间" sortable></el-table-column>
             <el-table-column label="操作" sortable>
               <template slot-scope="scope">
@@ -65,15 +65,12 @@
         </div>
       </div>
     </el-dialog>
-
-
   </el-container>
 </template>
 
 <script>
 
-import { getBuckles } from '@/api/buckles'
-
+import { getBuckles } from '@/api/member'
 export default {
   data() {
     return {
