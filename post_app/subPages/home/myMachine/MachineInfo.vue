@@ -10,9 +10,10 @@
 			</view>
 			<view class="nav_riht">
 				<image src="/static/home/sweep.png" mode="" class="sweep"></image>
-				<image src="/static/home/write.png" mode=""></image>
+				<image src="/static/home/write.png" mode="" @click="Toliudong"></image>
 			</view>
 		</view>
+		<!-- <view class="null" style="height: 196rpx;"></view> -->
 		<view class="header">
 			<view class="input">
 				<image class="search" referrerpolicy="no-referrer"
@@ -65,6 +66,11 @@
 		methods: {
 			activation(val){
 				this.currentindex = val
+			},
+			Toliudong(){
+				uni.navigateTo({
+					url:'./liudong'
+				})
 			}
 		}
 	}
@@ -75,6 +81,10 @@
 		background-color: rgb(244, 244, 244);
 	}
 	.nav{
+		/* position: fixed;
+		top: 0; */
+		position: sticky;
+		top: 0;
 		width: 100%;
 		height: 190rpx;
 		display: flex;

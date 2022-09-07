@@ -1,6 +1,6 @@
 <template>
 	<!-- 我的商户 -->
-	<view class="page flex-col justify-between">
+	<view class="page">
 		<view class="group_1 flex-col">
 			<view class="box_1 flex-row">
 				<view class="image-wrapper_1" @click="back">
@@ -110,13 +110,15 @@
 	}
 	
 	.group_1 {
+		/* position: sticky;
+		top: 0; */
 		background-color: rgba(28, 83, 218, 1);
-		position: relative;
 		width: 750rpx;
 		padding-top: 75rpx;
 	}
 
 	.box_1 {
+		
 		width: 100%;
 		justify-content: space-between;
 		height: 87rpx;

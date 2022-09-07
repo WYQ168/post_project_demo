@@ -22,7 +22,7 @@
 			</view>
 		</view>
 		<text class="all">共7户</text>
-		<view class="merchantList" v-for="item in 7" @click="merchantInfo">
+		<view class="merchantList" v-for="item in 17" @click="merchantInfo">
 			<view class="merchantLeft">
 				<img src="" alt="">
 				<text class="merchantName">吉安安</text>
@@ -61,8 +61,9 @@
 	}
 
 	.group_1 {
+		position: fixed;
+		top: 0;
 		background-color: rgba(28, 83, 218, 1);
-		position: relative;
 		width: 750rpx;
 		padding-top: 75rpx;
 	}
@@ -145,7 +146,7 @@
 		display: inline-block;
 		font-size: 24rpx;
 		color: rgba(153, 153, 153, 1);
-		padding-top: 22rpx;
+		padding-top: 340rpx;
 		padding-left: 32rpx;
 	}
 

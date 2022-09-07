@@ -95,7 +95,41 @@
 					"enablePullDownRefresh": false
 				}
 
-			}, {
+			}, 
+			{
+				"path": "home/myMachine/liudong",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁止使用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+			
+			},
+			{
+				"path": "home/myMachine/Deduction",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁止使用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+			
+			},
+			{
+				"path": "home/myMachine/Deduction_two",
+				"style": {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁止使用原生导航
+					},
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+			
+			},
+			{
 				"path": "home/myFriends/myFriends",
 				"style": {
 					"app-plus": { //app配置自定义导航
@@ -336,6 +370,9 @@
                     "path" : "home/myMachine/MachineInfo",
                     "style" :                                                                                    
                 {
+					"app-plus": { //app配置自定义导航
+						"titleNView": false //app禁用原生导航
+					},
                     "navigationBarTitleText": "",
                     "enablePullDownRefresh": false
                 }

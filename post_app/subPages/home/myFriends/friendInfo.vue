@@ -48,23 +48,33 @@
 			<text>交易数据</text>
 			<text class="all">全部数据 ></text>
 		</view>
+		<view id="echarts">
+		</view>
 	</view>
 </template>
 
 <script>
+	// import * as echarts from '@/static/js/echarts.min.js';
+
 	export default {
 		data() {
 			return {
-
+				single: '',
+				option:{}
 			}
 		},
 		methods: {
-
 		}
 	}
 </script>
 
 <style>
+	#echarts {
+		width: 100%;
+		height: 500rpx;
+		background-color: #1C53DA;
+	}
+
 	.box {
 		background-color: #1C53DA;
 		background: -webkit-linear-gradient(left, rgba(69, 128, 244, 1), rgba(23, 78, 214, 1));
@@ -240,15 +250,17 @@
 		margin-top: 32rpx;
 		background-color: rgba(240, 240, 240, 1);
 	}
-	.alldata{
+
+	.alldata {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding-right: 53rpx;
 		margin-top: 28rpx;
 	}
-	.all{
-		font-size: 26	rpx;
-		color: rgba(102, 102, 102,.8);
+
+	.all {
+		font-size: 26 rpx;
+		color: rgba(102, 102, 102, .8);
 	}
 </style>

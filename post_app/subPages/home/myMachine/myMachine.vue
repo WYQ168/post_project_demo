@@ -6,9 +6,9 @@
 				<image src="/static/arrow-left-bold.png" mode=""></image>
 			</view>
 			<view class="titleText">
-				我的机具
+				机具类型
 			</view>
-			<view class="nav_riht">
+			<view class="nav_riht" @click="Todeducton">
 				扣费管理
 			</view>
 		</view>
@@ -40,6 +40,11 @@
 				uni.navigateTo({
 					url:'./MachineInfo'
 				})
+			},
+			Todeducton(){
+				uni.navigateTo({
+					url:'./Deduction'
+				})
 			}
 		}
 	}
@@ -47,6 +52,8 @@
 
 <style scoped>
 	.nav{
+		position: sticky;
+		top: 0;
 		width: 100%;
 		height: 190rpx;
 		display: flex;
@@ -64,6 +71,7 @@
 		/* background-color: #FF4102; */
 	}
 	.titleText{
+		margin-left: 96rpx;
 		font-size: 36rpx;
 		color: #fff;
 	}
