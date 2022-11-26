@@ -15,8 +15,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="sales-common-security" />
-    <orderEntry type="module" module-name="sales-common-security" />
+    <orderEntry type="library" name="Maven: com.sales:sales-common-security:1.0.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="sales-common-core" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-openfeign:3.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-openfeign-core:3.0.4" level="project" />

@@ -113,7 +113,7 @@
 	 * @property {String} endDate 日期选择范围-结束日期
 	 * @property {Boolean} range 范围选择
 	 * @property {Boolean} insert = [true|false] 插入模式,默认为false
-	 * 	@value true 弹窗模式
+	 * 	 true 弹窗模式
 	 * 	@value false 插入模式
 	 * @property {Boolean} clearDate = [true|false] 弹窗模式是否清空上次选择内容
 	 * @property {Array} selected 打点，期待格式[{date: '2019-06-27', info: '签到', data: { custom: '自定义信息', name: '自定义消息头',xxx:xxx... }}]

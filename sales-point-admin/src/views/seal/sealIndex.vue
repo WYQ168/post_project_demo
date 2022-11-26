@@ -77,7 +77,7 @@
           <div class="flex">
             <div style="margin-right: 30px">印章图片:</div>
             <el-upload
-              action="http://192.168.0.108:8080/system/sealInfo/editSealFile"
+              action="http://192.168.0.108:8080/app/sealInfo/editSealFile"
               :data="{id:this.editParam.id,userType: 2}"
               :headers="headers"
               list-type="picture-card"
