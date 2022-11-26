@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(value = "APP用户相关接口")
 @RestController
-@RequestMapping(value = "/baseUser")
+@RequestMapping(value = "/user")
 public class UserController {
     @Autowired
     private UserService userService;
